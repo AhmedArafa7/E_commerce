@@ -46,6 +46,15 @@ export class CartService {
     });
   }
 
+  ClearCart():Observable<any>{
+    return this.httpClient.delete(`${environment.baseUrl}/api/v1/cart`,
+      {
+        headers:{
+          token: this.myToken
+        }
+    });
+  }
+
   updateProductQuantity(id:string, newCount:number):Observable<any>{
     return this.httpClient.put(`${environment.baseUrl}/api/v1/cart/${id}`,
       {

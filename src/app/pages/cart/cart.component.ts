@@ -46,9 +46,21 @@ export class CartComponent implements OnInit{
         console.log(err);
       }
     });
+  }
 
-
-
+  ClearItems():void{
+    this.cartService.ClearCart().subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res.message === 'success'){
+          this.cartDetails = {} as Icart;
+          console.log(res);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   updateCount(id:string, count:number):void{

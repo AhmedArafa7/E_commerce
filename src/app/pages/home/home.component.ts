@@ -9,6 +9,7 @@ import { SearchPipe } from '../../shared/pipes/search/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { LowerCasePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,11 @@ export class HomeComponent implements OnInit{
   private readonly productsService = inject(ProductsService);
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
+  private readonly toastrService = inject(ToastrService);
 
 
   search: string = '';
+  isLoading: boolean = false;
 
   customMainSlider: OwlOptions = {
     loop: true,
@@ -104,7 +107,12 @@ export class HomeComponent implements OnInit{
   addToCart(id:string): void {
     this.cartService.addProductToCart(id).subscribe({
       next:(res)=>{
+        this.isLoading = true;
         console.log(res);
+        if (res.status === 'success'){
+          this.toastrService.success(res.message , 'FreshCart')
+          this.isLoading = false;
+        }
       },
       error:(err)=>{
         console.log(err);
