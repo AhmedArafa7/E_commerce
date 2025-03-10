@@ -1,6 +1,6 @@
 <section class="sec w-1/2 mx-auto">
-    <h1 class="text-center text-green-600 text-3xl">CheckOut</h1>
-    <form [formGroup]="checkOoutForm" (ngSubmit)="submitForm()">
+    <form [formGroup]="checkOoutForm" (ngSubmit)="submitForm()" class="text-center">
+      <h1 class="text-center text-green-600 text-3xl">CheckOut</h1>
         <div class="mb-6">
             <label for="details" class="block mb-2 text-sm font-medium text-gray-900">details</label>
             <textarea type="text" id="details" formControlName="details" class="bg-white border border-gray-300 to-gray-900 text-sm rounded-lg focus:ring-blue-500"></textarea>
