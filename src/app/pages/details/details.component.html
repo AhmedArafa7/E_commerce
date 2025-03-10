@@ -1,0 +1,14 @@
+<div class="flex">
+    <div class="w-1/4">
+        <img [src]="productDetails.imageCover" [alt]="productDetails.title" class="w-full h-full object-cover rounded-lg">
+    </div>
+    <div class="w-1/4">
+        <h2 class="text-2xl font-bold text-gray-800">{{ productDetails.title }}</h2>
+        <p class="text-sm text-gray-600">{{ productDetails.description }}</p>
+        <p class="text-sm text-gray-600">{{ productDetails.price }}</p>
+        <p class="text-sm text-gray-600">{{ productDetails.quantity }}</p>
+        <p class="text-sm text-gray-600">{{ productDetails.category }}</p>
+        <p class="text-sm text-gray-600">{{ productDetails.createdAt }}</p>
+        <p class="text-sm text-gray-600">{{ productDetails.updatedAt }}</p>
+    </div>
+</div>

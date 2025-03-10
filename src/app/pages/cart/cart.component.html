@@ -1,0 +1,27 @@
+<section class="sec w-[75%] mx-auto mt-4">
+  <h1 class="text-center text-3xl text-green-600 font-bold">Shop Cart</h1>
+  <span class="text-green-500">Total Cart Price : {{cartDetails.totalCartPrice | currency:'GBP' }} </span>
+
+  @for (prod of cartDetails.products; track prod.product._id) {
+    <div class="flex border-b mb-2">
+        <div class="flex">
+            <img [src]="prod.product.imageCover" class="px-2 h-[100px] object-contain" alt="{{prod.product.title}}">
+            
+        </div>
+        <div class="flex w-full justify-between items-center"> 
+            <div>
+                <h3>{{prod.product.title}}</h3>
+                <h4>price : {{prod.price|currency:'GBP'}}</h4>
+                <button (click)="removeItem(prod.product._id)"> <i class="fas fa-trash-can text-green-600"></i> Remove</button>
+            </div>
+            <div class="flex items-center gap-4">
+                <button (click)="updateCount(prod.product._id, prod.count + 1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-plus"></i></button>
+                <span> {{prod.count}} </span>
+                <button (click)="updateCount(prod.product._id, prod.count - 1)" class="text-green-600 text-3xl"><i class="fa-regular fa-square-minus"></i></button>
+            </div>
+        </div>
+      </div>
+  }
+
+  <button class="btn-main" [routerLink]='["/checkout" , cartDetails._id]'>checkout</button>
+</section>
